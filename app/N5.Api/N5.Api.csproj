@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Confluent.Kafka" Version="2.5.1" />
+    <PackageReference Include="MediatR" Version="11.0.0" />
+    <PackageReference Include="NEST" Version="7.17.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\N5.Application\N5.Application.csproj" />
+    <ProjectReference Include="..\N5.Domain\N5.Domain.csproj" />
+    <ProjectReference Include="..\N5.Infrastructure\N5.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
