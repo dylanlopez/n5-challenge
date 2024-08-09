@@ -18,19 +18,8 @@ public class PermisoController : ControllerBase
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> RequestPermission(string empleadoNombre,
-		string empleadoApellido,
-		DateTime fechaPermiso,
-		int tipoPermisoId)
+	public async Task<IActionResult> RequestPermission([FromBody] AddPermisoCommandRequest request)
 	{
-		var request = new AddPermisoCommandRequest
-		{
-			EmpleadoNombre = empleadoNombre,
-			EmpleadoApellido = empleadoApellido,
-			FechaPermiso = fechaPermiso,
-			TipoPermisoId = tipoPermisoId
-		};
-
 		await _mediator.Send(request);
 		return Ok();
 	}

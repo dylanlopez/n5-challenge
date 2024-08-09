@@ -4,9 +4,10 @@ import { Permiso } from '../dtos/permiso';
 
 interface ModifyPermissionProps {
   permiso: Permiso;
+  onModifyCompleted: () => void;
 }
 
-const ModifyPermission: React.FC<ModifyPermissionProps> =  ({ permiso }) => {
+const ModifyPermission: React.FC<ModifyPermissionProps> =  ({ permiso, onModifyCompleted }) => {
   const [permisoModificado, setModifiedPermission] = useState<Permiso>(permiso);
 
   useEffect(() => {
@@ -23,6 +24,8 @@ const ModifyPermission: React.FC<ModifyPermissionProps> =  ({ permiso }) => {
       if (permisoModificado.id) {
         const response = await modifyPermission(permisoModificado.id, permisoModificado);
         console.log(response.data);
+        alert('Modificado correctamente');
+        onModifyCompleted(); // Ocultar el formulario
       }
     } catch (error) {
       console.error(error);
@@ -31,10 +34,10 @@ const ModifyPermission: React.FC<ModifyPermissionProps> =  ({ permiso }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" name="NombreEmpleado" value={permisoModificado.empleadoNombre} onChange={handleChange} placeholder="NombreEmpleado" />
-      <input type="text" name="ApellidoEmpleado" value={permisoModificado.empleadoApellido} onChange={handleChange} placeholder="ApellidoEmpleado" />
-      <input type="date" name="FechaPermiso" value={permisoModificado.fechaPermiso} onChange={handleChange} />
-      <input type="text" name="TipoPermiso" value={permisoModificado.tipoPermisoId} onChange={handleChange} placeholder="TipoPermiso" />
+      <input type="text" name="empleadoNombre" value={permisoModificado.empleadoNombre} onChange={handleChange} placeholder="NombreEmpleado" />
+      <input type="text" name="empleadoApellido" value={permisoModificado.empleadoApellido} onChange={handleChange} placeholder="ApellidoEmpleado" />
+      <input type="date" name="fechaPermiso" value={permisoModificado.fechaPermiso} onChange={handleChange} />
+      <input type="text" name="tipoPermisoId" value={permisoModificado.tipoPermisoId} onChange={handleChange} placeholder="TipoPermiso" />
       <button type="submit">Modify Permission</button>
     </form>
   );

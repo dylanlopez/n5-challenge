@@ -49,12 +49,17 @@ const GetPermissions: React.FC = () => {
     fetchPermissions();
   };
 
+  const handleModifyCompleted = () => {
+    setShowRequestForm(false);
+    fetchPermissions();
+  };
+
   return (
     <div>
     <h1>Permissions</h1>
     <button onClick={handleRequestClick}>Add New Permission</button>
     {showRequestForm && <RequestPermission onRequestCompleted={handleRequestCompleted} />}
-    {showModifyForm && selectedPermiso && <ModifyPermission permiso={selectedPermiso} />}
+    {showModifyForm && selectedPermiso && <ModifyPermission permiso={selectedPermiso} onModifyCompleted={handleModifyCompleted} />}
     <ul>
       {permissions.map(permiso => (
         <li key={permiso.id}>

@@ -6,6 +6,8 @@ const api = axios.create({
 });
 
 export const requestPermission = (permiso: Permiso) => {
+  console.log('requestPermission');
+  console.log(' permiso: ', permiso);
   return api.post<Permiso>('/Permiso', permiso);
 };
 

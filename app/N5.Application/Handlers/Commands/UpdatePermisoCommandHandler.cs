@@ -37,8 +37,8 @@ public class UpdatePermisoCommandHandler : IRequestHandler<UpdatePermisoCommandR
 
 		await _repository.UpdatePermiso(permiso);
 
-		var message = JsonSerializer.Serialize(permiso);
-		await _producer.ProduceAsync("modify_permissions", new Message<Null, string> { Value = message });
+		//var message = JsonSerializer.Serialize(permiso);
+		//await _producer.ProduceAsync("modify_permissions", new Message<Null, string> { Value = message });
 
 		return Unit.Value;
 	}
